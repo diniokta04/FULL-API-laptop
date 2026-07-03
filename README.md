@@ -1,11 +1,30 @@
-# FULL-API-laptop
-Berikut adalah penjelasan ringkas mengenai 3 komponen utama dalam sistem yang baru saja kamu buat:
+# 🛠️ Sistem Manajemen Antrean Toko Servis Laptop
 
-1. RESTful API (Backend)
-Jembatan penghubung antara aplikasi depan (Front-End) dan database. Menggunakan FastAPI, backend ini bertugas menerima permintaan (request) dari pengguna, memeriksa keamanannya, lalu mengeksekusi perintah seperti mengambil data (GET) atau menambah data (POST).
+Sistem manajemen antrean dan pendataan servis laptop berbasis web yang dibangun menggunakan **FastAPI** sebagai backend, **Supabase Auth & Database** sebagai media penyimpanan data serta autentikasi, dan **JSON Web Token (JWT)** sebagai sistem keamanannya. 
 
-2. JWT (JSON Web Token)
-Karcis digital sebagai bukti bahwa kamu sudah login. Saat kamu berhasil memasukkan email dan password yang benar di menu /login, server akan memberikan token berupa teks acak yang panjang. Token inilah yang wajib dibawa di setiap transaksi data agar sistem tahu kamu adalah pengguna yang sah.
+Project ini dirancang menggunakan **Arsitektur Modular Full-Stack Local**, di mana file logika backend, aset statis (CSS/JS), dan tampilan halaman (HTML Templates) dipisahkan secara terstruktur demi kemudahan pengembangan dan pengelolaan kode.
 
-3. CORS (Cross-Origin Resource Sharing)
-Aturan keamanan pada browser. Secara standar, browser akan memblokir jika ada file HTML lokal (index.html) mencoba menembak data ke server lain (FastAPI di port 8000). Kode middleware CORS yang kita masukkan berfungsi memberikan izin resmi agar browser tidak memblokir komunikasi tersebut.
+---
+
+## 📁 Struktur Folder Project
+
+Aplikasi ini menerapkan struktur folder yang rapi dan terintegrasi penuh di dalam server lokal backend:
+
+```text
+servic_laptop/
+│
+├── app.py                       # File utama Backend FastAPI & Konfigurasi Rute
+├── .env                         # File konfigurasi raia (Supabase URL & API Key)
+├── .gitignore                   # Pengabaian file rahasia agar tidak masuk GitHub
+│
+└── python_app/                  # Folder utama aplikasi web terintegrasi
+    ├── static/                  # Menyimpan seluruh aset statis aplikasi
+    │   ├── css/
+    │   │   └── styles.css       # Desain tampilan kustom halaman web
+    │   └── js/
+    │       ├── api-client.js    # Modul khusus penanganan fetch data ke API Backend
+    │       └── app.js           # Logika interaksi DOM, form, dan proteksi halaman
+    │
+    └── templates/               # Menyimpan file halaman web (HTML)
+        ├── login.html           # Tampilan halaman masuk sistem
+        └── dashboard.html       # Tampilan antrean servis & form input data
